@@ -1,0 +1,18 @@
+{
+    "name": "evgwed/fonbet",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Evgeniy",
+            "email": "evgwed@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3",
+        "illuminate/database": "^5.6",
+        "illuminate/events": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {"app\\": "app/"}
+    }
+}
