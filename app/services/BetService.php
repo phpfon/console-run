@@ -79,8 +79,8 @@ class BetService
             foreach ($items as $item) {
                 $code = $item['Code'];
                 $count = $item['Count'];
-                $betItem = null;
-                if (!isset($this->betItemsCheck[$code])) {
+                $betItem = BetItem::where('bet_id', $bet->id)->where('code', $code)->first();
+                if (!$betItem instanceof BetItem) {
                     $betItem = new BetItem();
                     $betItem->fill([
                         'bet_id' => $bet->id,
@@ -88,12 +88,10 @@ class BetService
                         'minute' => $minute,
                         'count' => $count
                     ]);
+                    $betItem->count = $count;
+                    $betItem->save();
                     echo ' - добавлена комбинация ' . $code . PHP_EOL;
-                } else {
-                    $betItem = $this->betItemsCheck[$code];
                 }
-                $betItem->count = $count;
-                $betItem->save();
             }
 
             echo ' Выгружена страница  ' . $page . PHP_EOL;

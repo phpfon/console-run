@@ -1,0 +1,3 @@
+SELECT CODE
+FROM `result`
+WHERE code REGEXP '11X.....X.X1(1|2|X)1.'
